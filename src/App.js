@@ -1,8 +1,11 @@
 import "./App.css";
 import React, { useState } from "react";
+import useSound from "use-sound";
+import music from "./audio/nothing mix adc _01.mp3";
 
 function App() {
   const [time, setTime] = useState(0);
+  const [play] = useSound(music);
 
   const runTimer = () => {
     const intervalid = setInterval(() => {
@@ -11,12 +14,15 @@ function App() {
           return (prev * 60 - 1) / 60;
         } else {
           clearInterval(intervalid);
-          window.open("https://youtu.be/kaf8PRNobYI", "_blank");
-          window.location.reload();
+          play();
           return 0;
         }
       });
     }, 1000);
+  };
+
+  const resetApp = () => {
+    window.location.reload();
   };
 
   const handleChange = ({ target }) => {
@@ -28,6 +34,7 @@ function App() {
       <input type="number" placeholder="Type minutes" onChange={handleChange} />
       <button onClick={runTimer}>Run</button>
       <p>{`${Math.floor((time * 60) / 60)}:${Math.floor((time * 60) % 60)}`}</p>
+      <button onClick={resetApp}>Reset</button>
     </div>
   );
 }
