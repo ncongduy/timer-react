@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/alarm-clock/static/css/main.ce0e667a.chunk.css",
-    "main.js": "/alarm-clock/static/js/main.ea2aacd8.chunk.js",
-    "main.js.map": "/alarm-clock/static/js/main.ea2aacd8.chunk.js.map",
+    "main.js": "/alarm-clock/static/js/main.075dadda.chunk.js",
+    "main.js.map": "/alarm-clock/static/js/main.075dadda.chunk.js.map",
     "runtime-main.js": "/alarm-clock/static/js/runtime-main.15564115.js",
     "runtime-main.js.map": "/alarm-clock/static/js/runtime-main.15564115.js.map",
     "static/js/2.63eedeb5.chunk.js": "/alarm-clock/static/js/2.63eedeb5.chunk.js",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.15564115.js",
     "static/js/2.63eedeb5.chunk.js",
     "static/css/main.ce0e667a.chunk.css",
-    "static/js/main.ea2aacd8.chunk.js"
+    "static/js/main.075dadda.chunk.js"
   ]
 }
