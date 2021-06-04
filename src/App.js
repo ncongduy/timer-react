@@ -1,47 +1,70 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useSound from "use-sound"; //npm install use-sound
 import music from "./audio/nothing mix adc _01.mp3";
 
 function App() {
-  const [time, setTime] = useState(0);
-  const [playTimer, setPlayTimer] = useState(false);
-  const [play] = useSound(music);
+  const [remainingSeconds, setRemainingSeconds] = useState(0);
+  const [onGoing, setOnGoing] = useState(false);
+  const [isTriggered, setIsTriggered] = useState(false);
+  const [playSound, { stop }] = useSound(music);
 
-  let minutes = Math.floor((time * 60) / 60);
-  let seconds = Math.floor((time * 60) % 60);
+  let minutes = Math.floor(remainingSeconds / 60);
+  let seconds = Math.floor(remainingSeconds % 60);
+  const timer = useRef(null);
 
   useEffect(() => {
-    if (playTimer) {
-      const intervalid = setInterval(() => {
-        setTime((prev) => {
+    if (!onGoing && isTriggered) {
+      setOnGoing(true);
+      timer.current = setInterval(() => {
+        setRemainingSeconds((prev) => {
           if (prev > 0) {
-            return (prev * 60 - 1) / 60;
+            return prev - 1;
           } else {
-            clearInterval(intervalid);
-            play();
+            clearTimer();
+            playSound();
             return 0;
           }
         });
       }, 1000);
     }
-  }, [playTimer]);
+  }, [isTriggered]);
 
   const runTimer = () => {
-    setPlayTimer(true);
+    if (!onGoing && remainingSeconds > 0) {
+      setIsTriggered(true);
+    }
+  };
+
+  const clearTimer = () => {
+    clearInterval(timer.current);
+    timer.current = null;
+    setOnGoing(false);
+    setIsTriggered(false);
+    setRemainingSeconds(0);
+    document.getElementById("inputTime").value = 0;
   };
 
   const resetApp = () => {
-    window.location.reload();
+    clearTimer();
+    stop();
   };
 
   const handleChange = ({ target }) => {
-    setTime(target.value);
+    if (!onGoing) {
+      let inputMinute = target.value;
+      setRemainingSeconds(inputMinute * 60);
+    }
   };
 
   return (
     <div className="App">
-      <input type="number" placeholder="Type minutes" onChange={handleChange} />
+      <input
+        id="inputTime"
+        type="number"
+        placeholder="Type minutes"
+        onChange={handleChange}
+      />
       <button onClick={runTimer}>Run</button>
       <p>{`${minutes}:${seconds}`}</p>
       <button onClick={resetApp}>Reset</button>
