@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useSound from "use-sound"; //npm install use-sound
 import music from "./audio/nothing mix adc _01.mp3";
 
@@ -10,6 +10,24 @@ function App() {
   const [isOngoing, setIsOnGoing] = useState(false);
   const [play, { stop }] = useSound(music);
   const runInterval = useRef(null);
+
+  useEffect(() => {
+    if (isOngoing) {
+      const startTimer = new Date().getTime();
+      const endTimer = startTimer + time * 60 * 1000 + 1000;
+
+      runInterval.current = setInterval(() => {
+        let currentTimer = new Date().getTime();
+        let countTimer = endTimer - currentTimer;
+        setMinutes(() => Math.floor(countTimer / 60000) % 60);
+        setSeconds(() => Math.floor(countTimer / 1000) % 60);
+
+        //if on time, play music
+        checkTimer(countTimer);
+      }, 1000);
+    }
+    return () => clearInterval(runInterval.current);
+  }, [isOngoing]);
 
   const handleChange = ({ target }) => {
     setTime(target.value);
@@ -29,20 +47,7 @@ function App() {
   };
 
   const runTimer = () => {
-    if (isOngoing) return;
-    const startTimer = new Date().getTime();
-    const endTimer = startTimer + time * 60 * 1000;
-
-    runInterval.current = setInterval(() => {
-      setIsOnGoing(true);
-      let currentTimer = new Date().getTime();
-      let countTimer = endTimer - currentTimer;
-      setMinutes(() => Math.floor(countTimer / 60000) % 60);
-      setSeconds(() => Math.floor(countTimer / 1000) % 60);
-
-      //if on time, play music
-      checkTimer(countTimer);
-    }, 1000);
+    setIsOnGoing(true);
   };
 
   const resetApp = () => {
