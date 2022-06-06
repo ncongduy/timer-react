@@ -69,6 +69,8 @@ function App() {
   };
 
   const resetApp = () => {
+    setTask('');
+    setTime('');
     resetTime();
     stop();
   };
