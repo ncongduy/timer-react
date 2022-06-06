@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/alarm-clock/static/css/main.ce0e667a.chunk.css",
-    "main.js": "/alarm-clock/static/js/main.e0049bdd.chunk.js",
-    "main.js.map": "/alarm-clock/static/js/main.e0049bdd.chunk.js.map",
+    "main.css": "/alarm-clock/static/css/main.1645034a.chunk.css",
+    "main.js": "/alarm-clock/static/js/main.046ea4ba.chunk.js",
+    "main.js.map": "/alarm-clock/static/js/main.046ea4ba.chunk.js.map",
     "runtime-main.js": "/alarm-clock/static/js/runtime-main.15564115.js",
     "runtime-main.js.map": "/alarm-clock/static/js/runtime-main.15564115.js.map",
     "static/js/2.63eedeb5.chunk.js": "/alarm-clock/static/js/2.63eedeb5.chunk.js",
@@ -12,7 +12,7 @@
     "static/js/4.da64f400.chunk.js": "/alarm-clock/static/js/4.da64f400.chunk.js",
     "static/js/4.da64f400.chunk.js.map": "/alarm-clock/static/js/4.da64f400.chunk.js.map",
     "index.html": "/alarm-clock/index.html",
-    "static/css/main.ce0e667a.chunk.css.map": "/alarm-clock/static/css/main.ce0e667a.chunk.css.map",
+    "static/css/main.1645034a.chunk.css.map": "/alarm-clock/static/css/main.1645034a.chunk.css.map",
     "static/js/2.63eedeb5.chunk.js.LICENSE.txt": "/alarm-clock/static/js/2.63eedeb5.chunk.js.LICENSE.txt",
     "static/js/3.b900fe40.chunk.js.LICENSE.txt": "/alarm-clock/static/js/3.b900fe40.chunk.js.LICENSE.txt",
     "static/media/App.css": "/alarm-clock/static/media/background.537a1630.jpeg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.15564115.js",
     "static/js/2.63eedeb5.chunk.js",
-    "static/css/main.ce0e667a.chunk.css",
-    "static/js/main.e0049bdd.chunk.js"
+    "static/css/main.1645034a.chunk.css",
+    "static/js/main.046ea4ba.chunk.js"
   ]
 }
