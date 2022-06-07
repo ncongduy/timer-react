@@ -38,8 +38,6 @@ function App() {
   const resetTime = () => {
     clearInterval(runInterval.current);
     runInterval.current = null;
-    // setTask('');
-    // setTime('');
     setHours('00');
     setMinutes('00');
     setSeconds('00');
@@ -55,8 +53,6 @@ function App() {
 
   const runTimer = (evt) => {
     evt.preventDefault();
-
-    console.log('run timer');
     setIsOnGoing(true);
   };
 
